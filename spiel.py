@@ -23,8 +23,15 @@ def clear():
                   ' ', ' ', ' ', ]
 
 
-def win(cell_1, cell_2, cell_3):
-    if cell_1 == playerSymbol and cell_2 == playerSymbol and cell_3 == playerSymbol:
+def win():
+    if (gameGround[0] == playerSymbol and gameGround[1] == playerSymbol and gameGround[2] == playerSymbol or
+        gameGround[3] == playerSymbol and gameGround[4] == playerSymbol and gameGround[5] == playerSymbol or
+        gameGround[6] == playerSymbol and gameGround[7] == playerSymbol and gameGround[8] == playerSymbol or
+        gameGround[1] == playerSymbol and gameGround[4] == playerSymbol and gameGround[7] == playerSymbol or
+        gameGround[2] == playerSymbol and gameGround[5] == playerSymbol and gameGround[8] == playerSymbol or
+        gameGround[3] == playerSymbol and gameGround[6] == playerSymbol and gameGround[9] == playerSymbol or
+        gameGround[1] == playerSymbol and gameGround[5] == playerSymbol and gameGround[9] == playerSymbol or
+        gameGround[3] == playerSymbol and gameGround[5] == playerSymbol and gameGround[7] == playerSymbol):
         global game_won
         game_won = True
 
@@ -44,6 +51,17 @@ def is_winner(gameGround, sign):
             (gameGround[3] == sign and gameGround[6] == sign and gameGround[9] == sign) or
             (gameGround[1] == sign and gameGround[5] == sign and gameGround[9] == sign) or
             (gameGround[3] == sign and gameGround[5] == sign and gameGround[7] == sign))
+
+win(gameGround[1], gameGround[2], gameGround[3])
+            win(gameGround[1], gameGround[5], gameGround[9])
+            win(gameGround[2], gameGround[4], gameGround[2])
+            win(gameGround[6], gameGround[7], gameGround[8])
+            win(gameGround[0], gameGround[3], gameGround[6])
+            lose(gameGround[0], gameGround[1], gameGround[2])
+            lose(gameGround[0], gameGround[4], gameGround[8])
+            lose(gameGround[6], gameGround[4], gameGround[2])
+            lose(gameGround[6], gameGround[7], gameGround[8])
+            lose(gameGround[0], gameGround[3], gameGround[6])
 
 
 @bot.message_handler(commands=['start'])
