@@ -79,8 +79,7 @@ def welcome(message):
 
         {0.first_name}! 
         Wanna help Karlotte 🐱 catch all the 🐀🐀🐀?
-        """.format(message.from_user, bot.get_me()),
-                         parse_mode='html', reply_markup=markup)
+        """.format(message.from_user, bot.get_me()), parse_mode='html', reply_markup=markup)
 
 
 @bot.message_handler(content_types=['text'])
