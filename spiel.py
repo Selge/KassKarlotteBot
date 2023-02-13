@@ -36,32 +36,17 @@ def win():
         game_won = True
 
 
-def lose(cell_1, cell_2, cell_3):
-    if cell_1 == botSymbol and cell_2 == botSymbol and cell_3 == botSymbol:
+def lose():
+    if (gameGround[0] == botSymbol and gameGround[1] == botSymbol and gameGround[2] == botSymbol or
+        gameGround[3] == botSymbol and gameGround[4] == botSymbol and gameGround[5] == botSymbol or
+        gameGround[6] == botSymbol and gameGround[7] == botSymbol and gameGround[8] == botSymbol or
+        gameGround[1] == botSymbol and gameGround[4] == botSymbol and gameGround[7] == botSymbol or
+        gameGround[2] == botSymbol and gameGround[5] == botSymbol and gameGround[8] == botSymbol or
+        gameGround[3] == botSymbol and gameGround[6] == botSymbol and gameGround[9] == botSymbol or
+        gameGround[1] == botSymbol and gameGround[5] == botSymbol and gameGround[9] == botSymbol or
+        gameGround[3] == botSymbol and gameGround[5] == botSymbol and gameGround[7] == botSymbol):
         global losebool
         game_lost = True
-
-
-def is_winner(gameGround, sign):
-    return ((gameGround[0] == sign and gameGround[1] == sign and gameGround[2] == sign) or
-            (gameGround[3] == sign and gameGround[4] == sign and gameGround[5] == sign) or
-            (gameGround[6] == sign and gameGround[7] == sign and gameGround[8] == sign) or
-            (gameGround[1] == sign and gameGround[4] == sign and gameGround[7] == sign) or
-            (gameGround[2] == sign and gameGround[5] == sign and gameGround[8] == sign) or
-            (gameGround[3] == sign and gameGround[6] == sign and gameGround[9] == sign) or
-            (gameGround[1] == sign and gameGround[5] == sign and gameGround[9] == sign) or
-            (gameGround[3] == sign and gameGround[5] == sign and gameGround[7] == sign))
-
-win(gameGround[1], gameGround[2], gameGround[3])
-            win(gameGround[1], gameGround[5], gameGround[9])
-            win(gameGround[2], gameGround[4], gameGround[2])
-            win(gameGround[6], gameGround[7], gameGround[8])
-            win(gameGround[0], gameGround[3], gameGround[6])
-            lose(gameGround[0], gameGround[1], gameGround[2])
-            lose(gameGround[0], gameGround[4], gameGround[8])
-            lose(gameGround[6], gameGround[4], gameGround[2])
-            lose(gameGround[6], gameGround[7], gameGround[8])
-            lose(gameGround[0], gameGround[3], gameGround[6])
 
 
 @bot.message_handler(commands=['start'])
