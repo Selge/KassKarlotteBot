@@ -134,7 +134,9 @@ def callbackInline(call):
 
             item[i] = types.InlineKeyboardButton(gameGround[i], callback_data=str(i))
 
-        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Catch all rats!',
+        bot.edit_message_text(chat_id=call.message.chat.id,
+                              message_id=call.message.message_id,
+                              text='Catch all rats!',
                               reply_markup=None)
         # update cells
         global markup
