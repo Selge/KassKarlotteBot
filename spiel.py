@@ -1,9 +1,9 @@
-import types
 import telebot
+from telebot import types
 import random
 
 
-bot = telebot.TeleBot('')
+bot = telebot.TeleBot('6083048382:AAGNV4pgM3MIuaaxVq7kWo1nYEetEX4IfDQ')
 
 item = {}
 gameIsStart = False
@@ -44,7 +44,6 @@ def defend(cell_1, cell_2, posDef):
 
 @bot.message_handler(commands=['start'])
 def welcome(message):
-    # keyboard
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
     button = types.KeyboardButton("Start game")
     markup.add(button)
