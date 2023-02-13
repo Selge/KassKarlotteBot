@@ -120,16 +120,16 @@ def callbackInline(call):
                 if (gameGround[i] == " "):
                     gameGround[i] = playerSymbol
             # lose or win
-            win(gameGround[1], gameGround[2], gameGround[3])
-            win(gameGround[1], gameGround[5], gameGround[9])
+            win(gameGround[0], gameGround[1], gameGround[2])
+            win(gameGround[0], gameGround[4], gameGround[8])
             win(gameGround[6], gameGround[4], gameGround[2])
             win(gameGround[6], gameGround[7], gameGround[8])
             win(gameGround[0], gameGround[3], gameGround[6])
-            lose(gameGround[0], gameGround[1], gameGround[2])
-            lose(gameGround[0], gameGround[4], gameGround[8])
-            lose(gameGround[6], gameGround[4], gameGround[2])
-            lose(gameGround[6], gameGround[7], gameGround[8])
-            lose(gameGround[0], gameGround[3], gameGround[6])
+            # lose(gameGround[0], gameGround[1], gameGround[2])
+            # lose(gameGround[0], gameGround[4], gameGround[8])
+            # lose(gameGround[6], gameGround[4], gameGround[2])
+            # lose(gameGround[6], gameGround[7], gameGround[8])
+            # lose(gameGround[0], gameGround[3], gameGround[6])
 
             item[i] = types.InlineKeyboardButton(gameGround[i], callback_data=str(i))
 
