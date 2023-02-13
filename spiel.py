@@ -25,16 +25,25 @@ def clear():
 
 def win(cell_1, cell_2, cell_3):
     if cell_1 == playerSymbol and cell_2 == playerSymbol and cell_3 == playerSymbol:
-        print("win")
         global game_won
         game_won = True
 
 
 def lose(cell_1, cell_2, cell_3):
     if cell_1 == botSymbol and cell_2 == botSymbol and cell_3 == botSymbol:
-        print("lose")
         global losebool
         game_lost = True
+
+
+def is_winner(gameGround, sign):
+    return ((gameGround[0] == sign and gameGround[1] == sign and gameGround[2] == sign) or
+            (gameGround[4] == sign and gameGround[5] == sign and gameGround[6] == sign) or
+            (gameGround[7] == sign and gameGround[8] == sign and gameGround[9] == sign) or
+            (gameGround[1] == sign and gameGround[4] == sign and gameGround[7] == sign) or
+            (gameGround[2] == sign and gameGround[5] == sign and gameGround[8] == sign) or
+            (gameGround[3] == sign and gameGround[6] == sign and gameGround[9] == sign) or
+            (gameGround[1] == sign and gameGround[5] == sign and gameGround[9] == sign) or
+            (gameGround[3] == sign and gameGround[5] == sign and gameGround[7] == sign))
 
 
 def defend(cell_1, cell_2, posDef):
@@ -118,23 +127,6 @@ def callbackInline(call):
             if call.data == str(i):
                 if (gameGround[i] == " "):
                     gameGround[i] = playerSymbol
-            # lose or win
-            win(gameGround[0], gameGround[1], gameGround[2])
-            win(gameGround[0], gameGround[4], gameGround[8])
-            win(gameGround[6], gameGround[4], gameGround[2])
-            win(gameGround[6], gameGround[7], gameGround[8])
-            win(gameGround[0], gameGround[3], gameGround[6])
-            win(gameGround[3], gameGround[4], gameGround[5])
-            win(gameGround[1], gameGround[4], gameGround[7])
-            win(gameGround[2], gameGround[5], gameGround[8])
-            lose(gameGround[0], gameGround[1], gameGround[2])
-            lose(gameGround[0], gameGround[4], gameGround[8])
-            lose(gameGround[6], gameGround[4], gameGround[2])
-            lose(gameGround[6], gameGround[7], gameGround[8])
-            lose(gameGround[0], gameGround[3], gameGround[6])
-            lose(gameGround[3], gameGround[4], gameGround[5])
-            lose(gameGround[1], gameGround[4], gameGround[7])
-            lose(gameGround[2], gameGround[5], gameGround[8])
 
             item[i] = types.InlineKeyboardButton(gameGround[i], callback_data=str(i))
 
