@@ -97,22 +97,22 @@ def mess(message):
         bot.send_message(message.chat.id, "The hunt is started")
         global markup
         markup = types.InlineKeyboardMarkup(row_width=3)
-        for i in range(1, 10):
+        for i in range(0, 9):
             item[i] = types.InlineKeyboardButton(gameGround[i], callback_data=str(i))
-        markup.row(item[1], item[2], item[3])
-        markup.row(item[4], item[5], item[6])
-        markup.row(item[7], item[8], item[9])
+        markup.row(item[0], item[1], item[2])
+        markup.row(item[3], item[4], item[5])
+        markup.row(item[6], item[7], item[8])
         bot.send_message(message.chat.id, "Choose a cell", reply_markup=markup)
 
 
 @bot.callback_query_handler(func=lambda call: True)
 def callbackInline(call):
     if (call.message):
-        randomCell = random.randint(1, 10)
+        randomCell = random.randint(0, 9)
         if gameGround[randomCell] == playerSymbol:
-            randomCell = random.randint(1, 10)
+            randomCell = random.randint(0, 9)
         if gameGround[randomCell] == botSymbol:
-            randomCell = random.randint(1, 10)
+            randomCell = random.randint(0, 9)
         if gameGround[randomCell] == " ":
             gameGround[randomCell] = botSymbol
         # player manager
