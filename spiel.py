@@ -37,18 +37,13 @@ def lose(cell_1, cell_2, cell_3):
 
 def is_winner(gameGround, sign):
     return ((gameGround[0] == sign and gameGround[1] == sign and gameGround[2] == sign) or
-            (gameGround[4] == sign and gameGround[5] == sign and gameGround[6] == sign) or
-            (gameGround[7] == sign and gameGround[8] == sign and gameGround[9] == sign) or
+            (gameGround[3] == sign and gameGround[4] == sign and gameGround[5] == sign) or
+            (gameGround[6] == sign and gameGround[7] == sign and gameGround[8] == sign) or
             (gameGround[1] == sign and gameGround[4] == sign and gameGround[7] == sign) or
             (gameGround[2] == sign and gameGround[5] == sign and gameGround[8] == sign) or
             (gameGround[3] == sign and gameGround[6] == sign and gameGround[9] == sign) or
             (gameGround[1] == sign and gameGround[5] == sign and gameGround[9] == sign) or
             (gameGround[3] == sign and gameGround[5] == sign and gameGround[7] == sign))
-
-
-def defend(cell_1, cell_2, posDef):
-    if cell_1 == playerSymbol and cell_2 == playerSymbol:
-        posDef = botSymbol
 
 
 @bot.message_handler(commands=['start'])
