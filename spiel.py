@@ -45,7 +45,7 @@ def lose():
         gameGround[3] == botSymbol and gameGround[6] == botSymbol and gameGround[9] == botSymbol or
         gameGround[1] == botSymbol and gameGround[5] == botSymbol and gameGround[9] == botSymbol or
         gameGround[3] == botSymbol and gameGround[5] == botSymbol and gameGround[7] == botSymbol):
-        global losebool
+        global game_lost
         game_lost = True
 
 
