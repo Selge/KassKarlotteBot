@@ -7,9 +7,9 @@ bot = telebot.TeleBot('6083048382:AAGNV4pgM3MIuaaxVq7kWo1nYEetEX4IfDQ')
 
 item = {}
 gameIsStart = False
-gameGround = [' ', ' ', ' ',
-              ' ', ' ', ' ',
-              ' ', ' ', ' ', ]
+gameGround = [" ", " ", " ",
+              " ", " ", " ",
+              " ", " ", " ", ]
 playerSymbol = '🐱'
 botSymbol = '🐀'
 game_won = False
@@ -18,9 +18,9 @@ game_lost = False
 
 def clear():
     global gameGround
-    gameGround = [' ', ' ', ' ',
-                  ' ', ' ', ' ',
-                  ' ', ' ', ' ', ]
+    gameGround = [" ", " ", " ",
+                  " ", " ", " ",
+                  " ", " ", " ", ]
 
 
 def win():
