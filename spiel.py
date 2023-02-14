@@ -3,7 +3,7 @@ from telebot import types
 import random
 
 
-bot = telebot.TeleBot('6083048382:AAGNV4pgM3MIuaaxVq7kWo1nYEetEX4IfDQ')
+bot = telebot.TeleBot('')
 
 item = {}
 gameIsStart = False
