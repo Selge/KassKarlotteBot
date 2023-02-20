@@ -1,3 +1,3 @@
-def get_token():
+def token():
     token = str()
     return token

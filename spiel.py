@@ -3,17 +3,18 @@ from telebot import types
 import random
 
 import token
+import spielmaterial
 
 
 bot = telebot.TeleBot(token)
 
 item = {}
 gameIsStart = False
-gameGround = 10 * [" "]
-playerSymbol = '🐱'
-botSymbol = '🐀'
 game_won = False
 game_lost = False
+
+
+
 
 
 @bot.message_handler(commands=['start'])
