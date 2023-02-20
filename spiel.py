@@ -8,7 +8,7 @@ import spielmaterial as sm
 
 bot = telebot.TeleBot(key.get_key())
 
-item = {}
+item = []
 gameIsStart = False
 game_won = False
 game_lost = False
@@ -36,7 +36,7 @@ def mess(message):
             bot.send_message(message.chat.id, "use /start to play!")
 
     if gameIsStart == True:
-        item = {}
+        item = []
         bot.send_message(message.chat.id, "The hunt is started")
         global markup
         markup = types.InlineKeyboardMarkup(row_width=3)
