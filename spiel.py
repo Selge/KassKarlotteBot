@@ -32,19 +32,6 @@ def win():
         game_won = True
 
 
-# def lose():
-#     if (gameGround[0] == botSymbol and gameGround[1] == botSymbol and gameGround[2] == botSymbol or
-#         gameGround[3] == botSymbol and gameGround[4] == botSymbol and gameGround[5] == botSymbol or
-#         gameGround[6] == botSymbol and gameGround[7] == botSymbol and gameGround[8] == botSymbol or
-#         gameGround[1] == botSymbol and gameGround[4] == botSymbol and gameGround[7] == botSymbol or
-#         gameGround[2] == botSymbol and gameGround[5] == botSymbol and gameGround[8] == botSymbol or
-#         gameGround[3] == botSymbol and gameGround[6] == botSymbol and gameGround[9] == botSymbol or
-#         gameGround[1] == botSymbol and gameGround[5] == botSymbol and gameGround[9] == botSymbol or
-#         gameGround[3] == botSymbol and gameGround[5] == botSymbol and gameGround[7] == botSymbol):
-#         global game_lost
-#         game_lost = True
-
-
 @bot.message_handler(commands=['start'])
 def welcome(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
