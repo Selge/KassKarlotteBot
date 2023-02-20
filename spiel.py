@@ -2,8 +2,9 @@ import telebot
 from telebot import types
 import random
 
+import token
 
-token = 
+
 bot = telebot.TeleBot(token)
 
 item = {}
