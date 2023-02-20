@@ -16,24 +16,6 @@ game_won = False
 game_lost = False
 
 
-def clear():
-    global gameGround
-    gameGround = 10 * [" "]
-
-
-def win():
-    if (gameGround[0] == playerSymbol and gameGround[1] == playerSymbol and gameGround[2] == playerSymbol or
-        gameGround[3] == playerSymbol and gameGround[4] == playerSymbol and gameGround[5] == playerSymbol or
-        gameGround[6] == playerSymbol and gameGround[7] == playerSymbol and gameGround[8] == playerSymbol or
-        gameGround[1] == playerSymbol and gameGround[4] == playerSymbol and gameGround[7] == playerSymbol or
-        gameGround[2] == playerSymbol and gameGround[5] == playerSymbol and gameGround[8] == playerSymbol or
-        gameGround[3] == playerSymbol and gameGround[6] == playerSymbol and gameGround[9] == playerSymbol or
-        gameGround[1] == playerSymbol and gameGround[5] == playerSymbol and gameGround[9] == playerSymbol or
-        gameGround[3] == playerSymbol and gameGround[5] == playerSymbol and gameGround[7] == playerSymbol):
-        global game_won
-        game_won = True
-
-
 @bot.message_handler(commands=['start'])
 def welcome(message):
     markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
