@@ -2,11 +2,11 @@ import telebot
 from telebot import types
 import random
 
-import token
+import key
 import spielmaterial as sm
 
 
-bot = telebot.TeleBot(token)
+bot = telebot.TeleBot(key.get_key)
 
 item = {}
 gameIsStart = False
