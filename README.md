@@ -26,6 +26,6 @@ A very simple GameBot using telebot.
             """
 
 
-This is a sad story about a cat named Karlotte, written by estonian poet Kalju Kangur.
+This is a sad story about a cat named Karlotte, written by estonian poet **Kalju Kangur**.
 Karlotte once went for a rat hunt. She caught all the rats in the basement and put them to an old sack.
 But the sack was too old and all the rats ran away. Poor Karlotte! Let's help her!
