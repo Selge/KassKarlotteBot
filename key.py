@@ -1,6 +1,5 @@
 def get_key():
-    token = open("token.txt", "r")
-    print(token.read())
+    key = open("token.txt", "r")
+    token = key.read()
 
-
-get_key()
+    return token

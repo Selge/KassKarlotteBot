@@ -6,7 +6,8 @@ import key
 import spielmaterial as sm
 
 
-bot = telebot.TeleBot(key.get_key)
+token = key.get_key()
+bot = telebot.TeleBot(token)
 
 item = {}
 gameIsStart = False
