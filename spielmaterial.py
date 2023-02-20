@@ -31,14 +31,6 @@ def is_space_free(board, move):
     return board[move] == ' '
 
 
-def get_player_move(board):
-    move = ' '
-    while move not in '1 2 3 4 5 6 7 8 9'.split() or not is_space_free(board, int(move)):
-        print("What's your next move? (1-9)")
-        move = input()
-    return int(move)
-
-
 def choose_random_move_from_list(board, moves_list):
     possible_moves = []
     for i in moves_list:

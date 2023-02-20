@@ -3,7 +3,7 @@ from telebot import types
 import random
 
 import token
-import spielmaterial
+import spielmaterial as sm
 
 
 bot = telebot.TeleBot(token)
@@ -12,9 +12,6 @@ item = {}
 gameIsStart = False
 game_won = False
 game_lost = False
-
-
-
 
 
 @bot.message_handler(commands=['start'])
@@ -63,7 +60,7 @@ def mess(message):
             global gameIsStart
             gameIsStart = True
         else:
-            bot.send_message(message.chat.id, "use /help for assist!")
+            bot.send_message(message.chat.id, "use /start to play!")
 
     if gameIsStart == True:
         item = {}
@@ -71,7 +68,7 @@ def mess(message):
         global markup
         markup = types.InlineKeyboardMarkup(row_width=3)
         for i in range(0, 9):
-            item[i] = types.InlineKeyboardButton(gameGround[i], callback_data=str(i))
+            item[i] = types.InlineKeyboardButton(sm.board[i], callback_data=str(i))
         markup.row(item[0], item[1], item[2])
         markup.row(item[3], item[4], item[5])
         markup.row(item[6], item[7], item[8])
@@ -81,8 +78,9 @@ def mess(message):
 @bot.callback_query_handler(func=lambda call: True)
 def callbackInline(call):
     if (call.message):
+        sm.get_computer_move()
         randomCell = random.randint(0, 9)
-        if gameGround[randomCell] == playerSymbol:
+        if gameGround[randomCell] == sm.playerSymbol:
             randomCell = random.randint(0, 9)
         if gameGround[randomCell] == botSymbol:
             randomCell = random.randint(0, 9)
