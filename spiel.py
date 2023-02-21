@@ -50,40 +50,45 @@ def mess(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callbackInline(call):
-    turn = 'Human'
     if (call.message):
-        if turn == 'Human':
-            draw_board(the_board)
-            move = get_player_move(the_board)
-            make_move(the_board, player_sign, move)
+        while True:
+            the_board = [' '] * 10
+            game_is_active = True
+            turn = 'Human'
 
-            if is_winner(the_board, player_sign):
-                draw_board(the_board)
-                print('Congrats! You have won the game!')
-                game_is_active = False
-            else:
-                if is_board_full(the_board):
-                    draw_board(the_board)
-                    print('The game is a tie!')
-                    break
+            while game_is_active:
+                if turn == 'Human':
+                    move = sm.get_player_move(the_board)
+                    sm.make_move(the_board, sm.player_sign, move)
+
+                    if sm.is_winner(the_board, sm.player_sign):
+                        sm.draw_board(the_board)
+                        print('Congrats! You have won the game!')
+                        game_is_active = False
+                    else:
+                        if sm.is_board_full(the_board):
+                            sm.draw_board(the_board)
+                            print('The game is a tie!')
+                            break
+                        else:
+                            turn = 'Computer'
+
                 else:
-                    turn = 'Computer'
+                    move = sm.get_computer_move(the_board, sm.computer_sign)
+                    sm.make_move(the_board, sm.computer_sign, move)
+                    the_board[move] = sm.computer_sign
 
-        else:
-            move = get_computer_move(the_board, computer_sign)
-            make_move(the_board, computer_sign, move)
-
-            if is_winner(the_board, player_sign):
-                draw_board(the_board)
-                print('The computer has beaten you! You lose.')
-                game_is_active = False
-            else:
-                if is_board_full(the_board):
-                    draw_board(the_board)
-                    print('The game is a tie!')
-                    break
-                else:
-                    turn = 'Human'
+                    if sm.is_winner(the_board, sm.player_sign):
+                        sm.draw_board(the_board)
+                        print('The computer has beaten you! You lose.')
+                        game_is_active = False
+                    else:
+                        if sm.is_board_full(the_board):
+                            sm.draw_board(the_board)
+                            print('The game is a tie!')
+                            break
+                        else:
+                            turn = 'Human'
         #
         # randomCell = sm.get_computer_move(sm.board, sm.computer_sign)
         # if sm.board[randomCell] == sm.player_sign:
