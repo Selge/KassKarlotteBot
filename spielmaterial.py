@@ -1,15 +1,16 @@
+game_cell = {}
 gameboard = 9 * [" "]
 player_sign = '🐱'
 robot_sign = '🐀'
 
 
-def win(cell_1, cell_2, cell_3):
+def winner(cell_1, cell_2, cell_3):
     if cell_1 == player_sign and cell_2 == player_sign and cell_3 == player_sign:
         global game_won
         game_won = True
 
 
-def lose(cell_1, cell_2, cell_3):
+def loser(cell_1, cell_2, cell_3):
     if cell_1 == robot_sign and cell_2 == robot_sign and cell_3 == robot_sign:
         global losebool
         game_lost = True
