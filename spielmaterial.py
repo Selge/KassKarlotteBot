@@ -16,18 +16,13 @@ def loser(cell_1, cell_2, cell_3):
         game_lost = True
 
 
-def defend(cell_1, cell_2, posDef):
-    if cell_1 == player_sign and cell_2 == player_sign:
-        posDef = robot_sign
-
-
 def clear():
     global gameboard
     gameboard = 9 * [" "]
 
 
 def message():
-    karlotte = """ 
+    short_story = """ 
             Seisid keldris koorepotid,
             koore kallal käisid rotid.
 
@@ -57,4 +52,4 @@ def message():
         {0.first_name}! 
         Wanna help Karlotte 🐱 catch all the 🐀🐀🐀?
         """
-    return karlotte
+    return short_story

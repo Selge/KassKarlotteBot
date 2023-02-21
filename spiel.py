@@ -21,9 +21,9 @@ def welcome(message):
     markup.add(button)
 
     if message.text == "/start":
-        robot.send_message(message.chat.id, sm.message().format(message.from_user, bot.get_me()),
-                         parse_mode='html',
-                         reply_markup=markup)
+        robot.send_message(message.chat.id, sm.message().format(message.from_user, robot.get_me()),
+                           parse_mode='html',
+                           reply_markup=markup)
 
 
 @robot.message_handler(content_types=['text'])
@@ -88,29 +88,25 @@ def callbackInline(call):
                                                          callback_data=str(i))
 
         robot.edit_message_text(chat_id=call.message.chat.id,
-                              message_id=call.message.message_id,
-                              text='Catch all the rats!',
-                              reply_markup=None)
+                                message_id=call.message.message_id,
+                                text='Catch all the rats!',
+                                reply_markup=None)
         global markup
         markup.row(sm.game_cell[0], sm.game_cell[1], sm.game_cell[2])
         markup.row(sm.game_cell[3], sm.game_cell[4], sm.game_cell[5])
         markup.row(sm.game_cell[6], sm.game_cell[7], sm.game_cell[8])
 
-        robot.send_message(call.message.chat.id,
-                         "Choose a cell to catch a rat!",
-                         reply_markup=markup)
+        robot.send_message(call.message.chat.id, "Choose a cell to catch a rat!", reply_markup=markup)
         global game_won
         if game_won:
             sm.clear()
-            robot.send_message(call.message.chat.id,
-                             "All the rats are in a new bag! 😸")
+            robot.send_message(call.message.chat.id, "All the rats are in a new bag! 😸")
             game_won = True
             game_started = False
         global game_lost
         if game_lost:
             sm.clear()
-            robot.send_message(call.message.chat.id,
-                             "All the rats ran away! 😿")
+            robot.send_message(call.message.chat.id, "All the rats ran away! 😿")
             game_lost = True
             game_started = False
 
