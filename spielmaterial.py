@@ -1,3 +1,5 @@
+game_won = False
+game_lost = False
 game_cell = {}
 gameboard = 9 * [" "]
 player_sign = '🐱'
@@ -12,7 +14,7 @@ def winner(cell_1, cell_2, cell_3):
 
 def loser(cell_1, cell_2, cell_3):
     if cell_1 == robot_sign and cell_2 == robot_sign and cell_3 == robot_sign:
-        global losebool
+        global game_lost
         game_lost = True
 
 

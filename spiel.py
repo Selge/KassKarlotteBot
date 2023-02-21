@@ -27,13 +27,13 @@ def welcome(message):
 
 
 @robot.message_handler(content_types=['text'])
-def mess(message):
+def new_game(message):
     if message.chat.type == 'private':
         if message.text == "Start game":
             global gameIsStart
             gameIsStart = True
         else:
-            robot.send_message(message.chat.id, "use /help for assist!")
+            robot.send_message(message.chat.id, "use /start to play")
 
     if gameIsStart == True:
         empty_cell = {}
@@ -41,17 +41,15 @@ def mess(message):
         global markup
         markup = types.InlineKeyboardMarkup(row_width=3)
         for i in range(0, 9):
-            empty_cell[i] = types.InlineKeyboardButton(sm.gameboard[i],
-                                                       callback_data=str(i))
+            empty_cell[i] = types.InlineKeyboardButton(sm.gameboard[i], callback_data=str(i))
         markup.row(empty_cell[0], empty_cell[1], empty_cell[2])
         markup.row(empty_cell[3], empty_cell[4], empty_cell[5])
         markup.row(empty_cell[6], empty_cell[7], empty_cell[8])
-        robot.send_message(message.chat.id, "Choose a cell to catch a rat!",
-                         reply_markup=markup)
+        robot.send_message(message.chat.id, "Choose a cell to catch a rat!", reply_markup=markup)
 
 
 @robot.callback_query_handler(func=lambda call: True)
-def callbackInline(call):
+def playing(call):
     if (call.message):
         move = random.randint(0, 9)
         if sm.gameboard[move] == sm.player_sign:
@@ -74,7 +72,6 @@ def callbackInline(call):
             sm.winner(sm.gameboard[0], sm.gameboard[3], sm.gameboard[6])
             sm.winner(sm.gameboard[1], sm.gameboard[4], sm.gameboard[7])
             sm.winner(sm.gameboard[2], sm.gameboard[5], sm.gameboard[8])
-
             sm.loser(sm.gameboard[0], sm.gameboard[1], sm.gameboard[2])
             sm.loser(sm.gameboard[0], sm.gameboard[4], sm.gameboard[8])
             sm.loser(sm.gameboard[2], sm.gameboard[4], sm.gameboard[6])
@@ -84,8 +81,7 @@ def callbackInline(call):
             sm.loser(sm.gameboard[1], sm.gameboard[4], sm.gameboard[7])
             sm.loser(sm.gameboard[2], sm.gameboard[5], sm.gameboard[8])
 
-            sm.game_cell[i] = types.InlineKeyboardButton(sm.gameboard[i],
-                                                         callback_data=str(i))
+            sm.game_cell[i] = types.InlineKeyboardButton(sm.gameboard[i], callback_data=str(i))
 
         robot.edit_message_text(chat_id=call.message.chat.id,
                                 message_id=call.message.message_id,
