@@ -50,27 +50,54 @@ def mess(message):
 
 @bot.callback_query_handler(func=lambda call: True)
 def callbackInline(call):
+    turn = 'Human'
     if (call.message):
-        randomCell = random.randint(0, 9)
-        if sm.board[randomCell] == sm.player_sign:
-            randomCell = random.randint(0, 9)
-        if sm.board[randomCell] == sm.computer_sign:
-            randomCell = random.randint(0, 9)
-        if sm.board[randomCell] == " ":
-            sm.board[randomCell] = sm.computer_sign
-        # player manager
-        for i in range(9):
-            if call.data == str(i):
-                if (sm.board[i] == " "):
-                    sm.board[i] = sm.player_sign
+        if turn == 'Human':
+            draw_board(the_board)
+            move = get_player_move(the_board)
+            make_move(the_board, player_sign, move)
 
-            item[i] = types.InlineKeyboardButton(sm.board[i], callback_data=str(i))
+            if is_winner(the_board, player_sign):
+                draw_board(the_board)
+                print('Congrats! You have won the game!')
+                game_is_active = False
+            else:
+                if is_board_full(the_board):
+                    draw_board(the_board)
+                    print('The game is a tie!')
+                    break
+                else:
+                    turn = 'Computer'
 
+        else:
+            move = get_computer_move(the_board, computer_sign)
+            make_move(the_board, computer_sign, move)
+
+            if is_winner(the_board, player_sign):
+                draw_board(the_board)
+                print('The computer has beaten you! You lose.')
+                game_is_active = False
+            else:
+                if is_board_full(the_board):
+                    draw_board(the_board)
+                    print('The game is a tie!')
+                    break
+                else:
+                    turn = 'Human'
+        #
+        # randomCell = sm.get_computer_move(sm.board, sm.computer_sign)
+        # if sm.board[randomCell] == sm.player_sign:
+        #     randomCell = random.randint(0, 9)
+        # if sm.board[randomCell] == sm.computer_sign:
+        #     randomCell = random.randint(0, 9)
+        # if sm.board[randomCell] == " ":
+        #     sm.board[randomCell] = sm.computer_sign
+
+        # update cells
         bot.edit_message_text(chat_id=call.message.chat.id,
                               message_id=call.message.message_id,
                               text='Catch all rats!',
                               reply_markup=None)
-        # update cells
         global markup
         markup.row(item[0], item[1], item[2])
         markup.row(item[3], item[4], item[5])
